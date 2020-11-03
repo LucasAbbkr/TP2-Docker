@@ -7,6 +7,7 @@ services:
       - app-network
     depends_on:
       - database
+    image: lucasabbkr/tp2_backend
 
   database:
     container_name: database
@@ -16,6 +17,7 @@ services:
       - app-network
     env_file:
       - database/.env
+    image: lucasabbkr/tp2_database
 
   httpd:
     container_name: reverse_proxy
@@ -24,6 +26,7 @@ services:
       - "80:80"
     networks:
       - app-network
+        image: lucasabbkr/tp2_httpd
 
 
 volumes:

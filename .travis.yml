@@ -8,8 +8,6 @@ script:
   - docker-compose build
   # Publication des images
   - docker-compose push
-  #- docker tag my-database USERNAME/my-database:1.0
-  #- docker push USERNAME/my-database
 
 services:
   - docker
