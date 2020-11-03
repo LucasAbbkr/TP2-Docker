@@ -1,7 +1,21 @@
 language: java
 
+script:
+  - mvn clean verify --file ./simple-api/pom.xml
+  # Connexion à Docker
+  - docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+  # Build
+  - docker-compose build
+  # Publication des images
+  - docker-compose push
+  #- docker tag my-database USERNAME/my-database:1.0
+  #- docker push USERNAME/my-database
+
 services:
   - docker
 
-script:
-  - mvn clean verify --file ./simple-api/pom.xml
+cache:
+  directories:
+  - $HOME/.m2
+
+
