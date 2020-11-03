@@ -1,14 +1,20 @@
 language: java
 
-script:
-  - mvn clean verify --file ./simple-api/pom.xml
-  - mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=devops_tp2
-  # Connexion à Docker
-  - docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-  # Build
-  - docker-compose build
-  # Publication des images
-  - docker-compose push
+jobs:
+  include:
+    - stage: test
+      script:
+        - mvn clean verify --file ./simple-api/pom.xml
+        - mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=devops_tp2
+    
+    - stage: deploy
+      script:
+        # Connexion à Docker
+        - docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+        # Build
+        - docker-compose build
+        # Publication des images
+        - docker-compose push
 
 services:
   - docker
