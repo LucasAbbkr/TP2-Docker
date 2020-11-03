@@ -1,2 +1,7 @@
 language: java
-script :
+
+services:
+  - docker
+
+script:
+  - mvn clean verify --file /simple-api/pom.xml
