@@ -4,4 +4,4 @@ services:
   - docker
 
 script:
-  - mvn clean verify --file /simple-api/pom.xml
+  - mvn clean verify --file ./simple-api/pom.xml
