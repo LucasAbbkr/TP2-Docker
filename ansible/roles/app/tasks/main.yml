@@ -4,3 +4,5 @@
   docker_container:
     name: backend
     image: lucasabbkr/tp2_backend
+    networks:
+      - name: app-network

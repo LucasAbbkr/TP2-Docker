@@ -4,3 +4,7 @@
   docker_container:
     name: httpd
     image: lucasabbkr/tp2_httpd
+    ports:
+      - 80:80
+    networks:
+      - name: app-network
