@@ -1,0 +1,6 @@
+---
+# tasks file for roles/app
+- name: Launch app
+  docker_container:
+    name: backend
+    image: lucasabbkr/tp2_backend

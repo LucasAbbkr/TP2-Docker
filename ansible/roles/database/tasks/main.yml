@@ -1,0 +1,15 @@
+---
+# tasks file for roles/database
+- name: Launch database
+  docker_container:
+    name: database
+    image: lucasabbkr/tp2_database
+    restart_policy: always
+    env:
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_USER: usr
+      POSTGRES_DB: db
+    volumes:
+      - /data
+    networks:
+      - name: app-network

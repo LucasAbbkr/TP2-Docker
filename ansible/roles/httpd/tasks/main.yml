@@ -1,0 +1,6 @@
+---
+# tasks file for roles/httpd
+- name: Launch proxy
+  docker_container:
+    name: httpd
+    image: lucasabbkr/tp2_httpd
